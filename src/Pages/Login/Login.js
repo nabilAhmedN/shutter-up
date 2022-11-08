@@ -88,7 +88,7 @@ const Login = () => {
                             Sign Up
                         </Link>
                     </p>
-                    <p className="text-center pt-3">--OR--</p>
+                    <p className="text-center pt-3 divider">OR</p>
                     <div className="text-center pt-3">
                         <button
                             onClick={handleGoogleSignIn}
