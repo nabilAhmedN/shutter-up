@@ -6,8 +6,8 @@ import booking4 from "../../assets/images/img1.png";
 
 const Ability = () => {
     return (
-        <section className="bg-fuchsia-50 w-4/5 mx-auto rounded-lg">
-            <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <section className="bg-fuchsia-50 w-4/5 mx-auto rounded-lg mb-3">
+            <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-7 lg:px-6">
                 <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
                     <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900">
                         Why take photos with Me?

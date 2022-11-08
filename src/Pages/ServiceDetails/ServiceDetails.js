@@ -7,7 +7,7 @@ const ServiceDetails = () => {
 
     const service = useLoaderData()
 
-    const { img, title, price, description, rating } = service;
+    const { _id ,img, title, price, description, rating } = service;
 
     const {user} = useContext(AuthContext)
     
@@ -34,7 +34,7 @@ const ServiceDetails = () => {
                 {user?.email ? (
                     <>
                         <div className="text-center mb-3">
-                            <Link to="/">
+                            <Link to={`/review/${_id}`}>
                                 <button className="btn btn-outline btn-primary">
                                     Give Review
                                 </button>
