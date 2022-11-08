@@ -1,5 +1,5 @@
 import React from 'react';
-import banner from '../../assets/images/img2.jpg'
+import banner from '../../assets/images/bannerImg.jpg'
 
 const Banner = () => {
     return (
@@ -7,7 +7,6 @@ const Banner = () => {
             className="hero min-h-screen"
             style={{
                 backgroundImage: `url(${banner})`,
-                // backgroundImage: "src={banner}",
             }}
         >
             <div className="hero-overlay bg-opacity-50"></div>

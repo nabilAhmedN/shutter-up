@@ -6,6 +6,7 @@ import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyReviews from "../Pages/MyReviews/MyReviews";
+import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import SignUp from "../Pages/SignUp/SignUp";
 
 export const routes = createBrowserRouter([
@@ -18,20 +19,26 @@ export const routes = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: '/myreviews',
-                element: <MyReviews/>
+                path: "/myreviews",
+                element: <MyReviews />,
             },
             {
-                path: '/addservice',
-                element: <AddService/>
+                path: "/addservice",
+                element: <AddService />,
             },
             {
-                path: '/allservices',
-                element: <AllServices/>
+                path: "/allservices",
+                element: <AllServices />,
             },
             {
-                path: '/blog',
-                element: <Blog/>
+                path: "/services/:id",
+                element: <ServiceDetails />,
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/services/${params.id}`),
+            },
+            {
+                path: "/blog",
+                element: <Blog />,
             },
             {
                 path: "/login",
@@ -40,7 +47,7 @@ export const routes = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUp />,
-            }
+            },
         ],
     },
 ]);
