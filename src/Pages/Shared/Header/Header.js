@@ -9,8 +9,8 @@ const Header = () => {
 
     const handleLogOut = () => {
         logOut()
-        .then()
-        .catch()
+            .then(() => {})
+            .catch((error) => console.error(error));
     }
 
     const menuItems = (
@@ -68,14 +68,21 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost h-24 w-24 normal-case text-xl">
+                <Link
+                    to="/"
+                    className="btn btn-ghost h-24 w-24 normal-case text-xl"
+                >
                     <img src={logo} alt="" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">{menuItems}</ul>
             </div>
-            
+            <div className="navbar-end">
+                <span className="pr-4 text-fuchsia-500">
+                    {user?.displayName}
+                </span>
+            </div>
         </div>
     );
 };

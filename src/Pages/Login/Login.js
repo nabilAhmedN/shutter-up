@@ -1,11 +1,24 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Logimg from '../../assets/images/shutter-up-wh.png'
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Logimg from "../../assets/images/loginImage.jpg";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+    const { login, googleProviderLogin } = useContext(AuthContext);
 
-    const {login} = useContext(AuthContext)
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        googleProviderLogin(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch((error) => console.error(error));
+    };
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -13,21 +26,25 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        login(email, password).then((result) => {
-            const user = result.user;
-            console.log(user);
-            form.reset();
-        })
-        .catch((error) => {
-        console.error(error)
-      })
-        
+        login(email, password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
     return (
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    <img className="w-3/4" src={Logimg} alt="" />
+                    <img
+                        className="ml-20 w-3/4 rounded-lg"
+                        src={Logimg}
+                        alt=""
+                    />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
                     <h1 className="text-5xl text-center font-bold">Login</h1>
@@ -53,14 +70,6 @@ const Login = () => {
                                 placeholder="password"
                                 className="input input-bordered"
                             />
-                            <label className="label">
-                                <a
-                                    href="/"
-                                    className="label-text-alt link link-hover"
-                                >
-                                    Forgot password?
-                                </a>
-                            </label>
                         </div>
                         <div className="form-control mt-6">
                             <input
@@ -71,14 +80,24 @@ const Login = () => {
                         </div>
                     </form>
                     <p className="text-center">
-                        New to Genius Car
+                        New to this website? Please
                         <Link
-                            className="text-orange-600 font-bold"
+                            className="text-fuchsia-500 font-bold"
                             to="/signup"
                         >
                             Sign Up
                         </Link>
                     </p>
+                    <p className="text-center pt-3">--OR--</p>
+                    <div className="text-center pt-3">
+                        <button
+                            onClick={handleGoogleSignIn}
+                            className="btn btn-wide btn-outline btn-primary"
+                        >
+                            <FaGoogle />
+                            <span className="ml-3 ">Login with Google</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

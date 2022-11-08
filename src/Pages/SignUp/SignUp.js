@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Signimg from '../../assets/images/shutter-up-foot.png'
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Signimg from "../../assets/images/signupImage.jpg";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const handleSignUp = (event) => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -15,8 +16,19 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
+                handleupdateUserProfile(name); 
             })
             .catch((err) => console.error(err));
+    };
+
+    const handleupdateUserProfile = (name) => {
+        const profile = {
+            displayName: name
+        };
+        updateUserProfile(profile)
+            .then(() => {})
+            .catch((error) => console.error(error));
     };
     return (
         <div className="hero w-full my-20">
@@ -71,10 +83,13 @@ const SignUp = () => {
                         </div>
                     </form>
                     <p className="text-center">
-                        Already have an account?{" "}
-                        <Link className="text-orange-600 font-bold" to="/login">
+                        Already have an account?
+                        <Link
+                            className="text-fuchsia-500 font-bold"
+                            to="/login"
+                        >
                             Login
-                        </Link>{" "}
+                        </Link>
                     </p>
                 </div>
             </div>
