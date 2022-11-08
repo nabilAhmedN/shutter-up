@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillStar } from "react-icons/ai";
 
-const ShortServicesCard = ({ service }) => {
+const AllServicesCard = ({ service }) => {
     const { _id, img, title, price, description, rating } = service;
     return (
         <div className="card w-96 bg-base-100 shadow-xl ml-3">
@@ -12,8 +12,9 @@ const ShortServicesCard = ({ service }) => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{title}</h2>
                 <h2 className="card-title">{price}</h2>
-                <p className='flex items-center'>
-                    <AiFillStar className='text-orange-400'/> <span>{rating}</span>
+                <p className="flex items-center">
+                    <AiFillStar className="text-orange-400" />{" "}
+                    <span>{rating}</span>
                 </p>
                 <p>{description.slice(0, 100) + "..."}</p>
                 <div className="card-actions">
@@ -26,4 +27,4 @@ const ShortServicesCard = ({ service }) => {
     );
 };
 
-export default ShortServicesCard;
+export default AllServicesCard;

@@ -23,8 +23,10 @@ const ShortServices = () => {
                 ))}
             </div>
             <div className="text-center m-5">
-                <Link to="/">
-                    <button className="btn btn-primary">See All Services</button>
+                <Link to="/allservices">
+                    <button className="btn btn-primary">
+                        See All Services
+                    </button>
                 </Link>
             </div>
         </div>
