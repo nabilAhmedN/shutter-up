@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { MdDeleteOutline } from "react-icons/md";
+import { MdUpdate } from "react-icons/md";
 
-const MyReviewTab = ({review}) => {
+const MyReviewTab = ({review, handleDelete}) => {
     const { _id, serviceName, message, reviewer, img, service, rating, status } = review
     return (
         <tr>
             <td>
                 <label>
-                    <button>X</button>
+                    <button onClick={() => handleDelete(_id)}>
+                        <MdDeleteOutline className="text-red-500 text-2xl" />
+                    </button>
                 </label>
             </td>
             <td>{serviceName}</td>
@@ -14,24 +19,26 @@ const MyReviewTab = ({review}) => {
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avater">
-                        <div className="rounded-lg h-16 w-16">
-                            {<img src={img} alt="" />}
+                        <div>
+                            {
+                                <img
+                                    src={img}
+                                    alt=""
+                                    className="rounded-full h-16 w-16"
+                                />
+                            }
                         </div>
                     </div>
                 </div>
             </td>
+            <td>{message}</td>
+            <td>{rating}</td>
             <td>
-                {message}
-            </td>
-            <td>
-                {rating}
-            </td>
-            <td>
-                <button className='btn btn-ghost btn-xs'>
-                    {
-                        status ? status : "panding"
-                    }
-                </button>
+                <Link to={`/update/${_id}`}>
+                    <button className="btn btn-ghost btn-xs">
+                        <MdUpdate className="text-green-400 text-2xl" />
+                    </button>
+                </Link>
             </td>
         </tr>
     );

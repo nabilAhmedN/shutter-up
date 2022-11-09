@@ -3,14 +3,39 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import MyReviewTab from "../MyReviewTab/MyReviewTab";
 
 const MyReviews = () => {
-
-    const {user} = useContext(AuthContext)
-    const [reviews, setReviews] = useState()
+    const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem(
+                    "shutterUp-token"
+                )}`,
+            },
+        })
             .then((res) => res.json())
             .then((data) => setReviews(data));
-    },[user?.email])
+    }, [user?.email]);
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm("are you sure to delete");
+        if (proceed) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert("deleted successfully");
+                        const remaining = reviews.filter(
+                            (review) => review._id !== id
+                        );
+                        setReviews(remaining);
+                    }
+                });
+        }
+    };
 
     return (
         <div>
@@ -23,7 +48,7 @@ const MyReviews = () => {
             ) : (
                 <>
                     <h2 className="text-3xl">
-                        You have {reviews?.length} Orders
+                        You have {reviews.length} review
                     </h2>
                     <div className="overflow-x-auto w-full mb-5">
                         <table className="table w-full">
@@ -39,10 +64,11 @@ const MyReviews = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {reviews?.map((review) => (
+                                {reviews.map((review) => (
                                     <MyReviewTab
                                         key={review._id}
                                         review={review}
+                                        handleDelete={handleDelete}
                                     ></MyReviewTab>
                                 ))}
                             </tbody>
