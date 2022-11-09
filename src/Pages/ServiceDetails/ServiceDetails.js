@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AiFillStar } from "react-icons/ai";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import DisplayReview from '../DisplayReview/DisplayReview';
 
 const ServiceDetails = () => {
 
@@ -31,7 +32,11 @@ const ServiceDetails = () => {
                 <h2 className="text-center font-bold text-2xl text-fuchsia-500 mt-5 mb-3">
                     Review
                 </h2>
-                {user?.email ? (
+                <div>
+                    <DisplayReview id={_id}/>
+                </div>
+                {
+                user?.email ? (
                     <>
                         <div className="text-center mb-3">
                             <Link to={`/review/${_id}`}>

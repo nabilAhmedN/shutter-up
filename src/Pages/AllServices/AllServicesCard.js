@@ -5,6 +5,7 @@ import { ImageViewer } from "react-image-viewer-dv";
 
 const AllServicesCard = ({ service }) => {
     const { _id, img, title, price, description, rating } = service;
+    
     return (
         <div className="card w-96 bg-base-100 shadow-xl ml-3">
             <figure className="px-10 pt-10">
