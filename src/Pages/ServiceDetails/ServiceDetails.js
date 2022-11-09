@@ -33,10 +33,9 @@ const ServiceDetails = () => {
                     Review
                 </h2>
                 <div>
-                    <DisplayReview id={_id}/>
+                    <DisplayReview id={_id} />
                 </div>
-                {
-                user?.email ? (
+                {user?.email ? (
                     <>
                         <div className="text-center mb-3">
                             <Link to={`/review/${_id}`}>
@@ -49,11 +48,16 @@ const ServiceDetails = () => {
                 ) : (
                     <>
                         <div className="text-center mb-3">
-                            <Link to="/login">
+                            {/* <Link to={`/review/${_id}`}>
                                 <button className="btn btn-outline btn-primary">
                                     Login for Give Review
                                 </button>
-                            </Link>
+                            </Link> */}
+                            <button className="btn btn-outline btn-primary">
+                                <Link to={`/review/${_id}`}>
+                                    Login for Give Review
+                                </Link>
+                            </button>
                         </div>
                     </>
                 )}

@@ -24,9 +24,6 @@ const PersonReview = ({review}) => {
                             <h2>{serviceName}</h2>
                         </span>
                         <div className="w-full md:w-px h-2 md:h-8 mx-8 bg-transparent md:bg-gray-200"></div>
-                        {/* <span className="mr-4 text-xl font-heading font-medium">
-                            <AiFillStar className="text-orange-400" /> {rating}
-                        </span> */}
                         <div className="flex items-center mr-4 text-xl font-heading font-medium">
                             <AiFillStar className="text-orange-400" /> {rating}
                         </div>

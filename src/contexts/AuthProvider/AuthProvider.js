@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
 
 
     const googleProviderLogin = (provider) => {
+        setLoading(true);
         return signInWithPopup(auth, provider);
     }; 
 
@@ -30,7 +31,8 @@ const AuthProvider = ({ children }) => {
     };
 
     const logOut = () => {
-        localStorage.removeItem("genius-token");
+        // localStorage.removeItem("genius-token");
+        setLoading(true);
         return signOut(auth);
     };
 
