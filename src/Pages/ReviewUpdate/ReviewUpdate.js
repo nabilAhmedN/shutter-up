@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ReviewUpdate = () => {
 
@@ -9,22 +11,31 @@ const ReviewUpdate = () => {
     const [user, setUser] = useState(data)
 
     const handleUpdateUser = (event) => {
-        event.preventDefult()
+        event.preventDefault()
         console.log(user);
 
-        fetch(`http://localhost:5000/services/${_id}`, {
+        fetch(`http://localhost:5000/reviews/${_id}`, {
             method: "PUT",
             headers: {
-                "Content-Type" : "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(user),
         })
-        .then((res) => res.json())
-        .then((data) => {
-            if(data.modifiedCount > 0){
-                alert("user update")
-            }
-        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    toast.success("Review Updated", {
+                        position: "top-right",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+            });
     };
 
     const handleInputChange = (event) => {
@@ -98,24 +109,7 @@ const ReviewUpdate = () => {
                     </button>
                 </div>
             </form>
-            {/* <form onSubmit={handleUpdateUser}  className='m-10' >
-            
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                <label className='w-full'>Product Id(readonly)</label>
-                <input onChange={handleInputChange} name="service" type="text" placeholder="service" defaultValue={service} className="input input-ghost w-full  input-bordered" readOnly required/>
-                <label className='w-full'>Product name</label>
-                <input onChange={handleInputChange} name="serviceName" type="text" placeholder="serviceName" defaultValue={serviceName} className="input input-ghost w-full  input-bordered" readOnly required />
-                <label className='w-full'>Price</label>
-                <input onChange={handleInputChange} name="price" type="text" placeholder="price" defaultValue={price} className="input input-ghost w-full  input-bordered" readOnly />
-                <input onChange={handleInputChange} name="rating" type="text" placeholder="rating" defaultValue={rating} className="input input-ghost w-full  input-bordered" required />
-            </div>
-            <textarea onChange={handleInputChange} name="message" className="textarea textarea-bordered mt-5 h-24 w-full" placeholder="FeedBack" defaultValue={message} required></textarea>
-            <div className='text-center'>
-            <input className='btn btn-primary' type="submit" value="update Reveiw" />
-            </div>
-
-            
-        </form> */}
+            <ToastContainer />
         </div>
     );
 };

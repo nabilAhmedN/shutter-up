@@ -35,7 +35,7 @@ const MyReviewTab = ({review, handleDelete}) => {
             <td>{rating}</td>
             <td>
                 <Link to={`/update/${_id}`}>
-                    <button className="btn btn-ghost btn-xs">
+                    <button className="">
                         <MdUpdate className="text-green-400 text-2xl" />
                     </button>
                 </Link>
