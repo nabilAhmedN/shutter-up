@@ -1,9 +1,11 @@
 import React from 'react';
 import Ability from '../Ability/Ability';
 import Banner from '../Banner/Banner';
+import useTitle from '../hooks/useTitle';
 import ShortServices from '../ShortServices/ShortServices';
 
 const Home = () => {
+    useTitle("Home");
     return (
         <div>
             <Banner/>

@@ -1,8 +1,11 @@
 import React from 'react';
 
 import { AiFillStar } from "react-icons/ai";
+import useTitle from '../hooks/useTitle';
 
 const PersonReview = ({review}) => {
+
+    useTitle("Details & Reviews");
 
     const { reviewer, img, rating, serviceName, message } = review;
 

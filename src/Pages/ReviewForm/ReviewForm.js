@@ -3,8 +3,12 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useTitle from "../hooks/useTitle";
 
 const ReviewForm = () => {
+
+    useTitle("Review Form");
+
     let dateObj = new Date();
     let dateAndTime = dateObj.toISOString();
 

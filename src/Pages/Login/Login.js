@@ -4,8 +4,11 @@ import Logimg from "../../assets/images/loginImage.jpg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
+import useTitle from "../hooks/useTitle";
 
 const Login = () => {
+
+    useTitle('Login')
 
     const { login, googleProviderLogin } = useContext(AuthContext);
 
