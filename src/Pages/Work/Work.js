@@ -16,8 +16,7 @@ const Work = () => {
                         </h2>
                         <p className="mb-5 font-normal text-gray-500">
                             Please tell me where, when, and what the occasion
-                            is. We'll assign the finest photographer for your
-                            needs.
+                            is. Then i will go to the root.
                         </p>
                     </article>
                     <article className="p-6 rounded-lg border shadow-md bg-fuchsia-100 ">
@@ -25,9 +24,8 @@ const Work = () => {
                             Plan
                         </h2>
                         <p className="mb-5 font-normal text-gray-500">
-                            Your photographer is available to discuss and
-                            organize the shoot with you using the chat system in
-                            my app.
+                            I am available to discuss and organize the shoot
+                            with you using the chat system in my app.
                         </p>
                     </article>
                     <article className="p-6 rounded-lg border shadow-md bg-fuchsia-100 ">
@@ -35,9 +33,9 @@ const Work = () => {
                             Shoot
                         </h2>
                         <p className="mb-5 font-normal text-gray-500">
-                            Your photographer will come on time with
-                            professional equipment to capture your moments and
-                            give a memorable experience.
+                            I will come on time with professional equipment to
+                            capture your moments and give a memorable
+                            experience.
                         </p>
                     </article>
                     <article className="p-6 rounded-lg border shadow-md bg-fuchsia-100 ">
@@ -45,7 +43,7 @@ const Work = () => {
                             Download
                         </h2>
                         <p className="mb-5 font-normal text-gray-500">
-                            I edit will improve your images, which you will be
+                            I will edit improve your images, which you will be
                             able to download straight to your devices 48 hours
                             following your session.
                         </p>
