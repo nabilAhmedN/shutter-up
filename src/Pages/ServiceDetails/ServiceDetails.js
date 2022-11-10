@@ -3,8 +3,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AiFillStar } from "react-icons/ai";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import DisplayReview from '../DisplayReview/DisplayReview';
+import useTitle from '../hooks/useTitle';
 
 const ServiceDetails = () => {
+
+    useTitle("Service Detail")
 
     const service = useLoaderData()
 
@@ -13,6 +16,9 @@ const ServiceDetails = () => {
     const {user} = useContext(AuthContext)
     
     return (
+
+        
+
         <div>
             <div className="mx-auto card w-3/4 bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
