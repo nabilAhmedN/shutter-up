@@ -18,7 +18,7 @@ const ShortServices = () => {
                 I provide this type of Services
             </p>
             <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {services.map((service) => (
+                {services.slice(0,3).map((service) => (
                     <ShortServicesCard key={service._id} service={service} />
                 ))}
             </div>
