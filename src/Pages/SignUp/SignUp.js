@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Signimg from "../../assets/images/signupImage.jpg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
@@ -7,6 +7,8 @@ import useTitle from "../hooks/useTitle";
 const SignUp = () => {
 
     useTitle("Sign Up");
+
+    const [error, setError] = useState("");
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const handleSignUp = (event) => {
@@ -21,9 +23,13 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError("");
                 handleupdateUserProfile(name); 
             })
-            .catch((err) => console.error(err));
+            .catch((err) => {
+                console.error(err)
+                setError(err.message);
+            });
     };
 
     const handleupdateUserProfile = (name) => {
@@ -86,6 +92,9 @@ const SignUp = () => {
                             />
                         </div>
                     </form>
+                    <div className="text-red-600 text-center">
+                        {error}
+                    </div>
                     <p className="text-center">
                         Already have an account?
                         <Link

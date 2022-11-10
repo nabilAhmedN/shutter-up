@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="footer footer-center p-10 bg-primary text-primary-content">
             <div>
                 <img className="h-32 w-32" src={logoDr} alt="" />
-                <p className="font-bold">
+                <p className="font-bold text-lg">
                     Top photographers on the Shutter Up <br /> photography team
                     are passionate about photography and everything that it
                     entails.
@@ -18,13 +18,13 @@ const Footer = () => {
             <div>
                 <div className="grid grid-flow-col gap-4">
                     <a className='h-24' href="https://github.com/nabilAhmedN">
-                        <BsGithub />
+                        <BsGithub className='text-2xl'/>
                     </a>
                     <a href="https://web.facebook.com/nabilAhmedNahid2">
-                        <BsFacebook />
+                        <BsFacebook className='text-2xl'/>
                     </a>
                     <a href="https://www.instagram.com/nabil_astro_b/">
-                        <BsInstagram />
+                        <BsInstagram className='text-2xl'/>
                     </a>
                 </div>
             </div>

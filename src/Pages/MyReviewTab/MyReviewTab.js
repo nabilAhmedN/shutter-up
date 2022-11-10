@@ -4,7 +4,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { MdUpdate } from "react-icons/md";
 
 const MyReviewTab = ({review, handleDelete}) => {
-    const { _id, serviceName, message, reviewer, img, service, rating, status } = review
+    const { _id, serviceName, message, reviewer, img,  rating, } = review
     return (
         <tr>
             <td>

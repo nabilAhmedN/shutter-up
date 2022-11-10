@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logimg from "../../assets/images/loginImage.jpg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
@@ -9,6 +9,8 @@ import useTitle from "../hooks/useTitle";
 const Login = () => {
 
     useTitle('Login')
+
+    const [error, setError] = useState("");
 
     const { login, googleProviderLogin } = useContext(AuthContext);
 
@@ -59,6 +61,7 @@ const Login = () => {
                         console.log(data);
                         // local storage is the easiest but not the best place to store jwt token
                         localStorage.setItem("shutterUp-token", data.token);
+                        setError("");
                         navigate(from, { replace: true });
                     });
 
@@ -67,7 +70,9 @@ const Login = () => {
             })
             .catch((error) => {
                 console.error(error);
+                setError(error.message)
             });
+            
     };
     return (
         <div className="hero w-full my-20">
@@ -112,6 +117,9 @@ const Login = () => {
                             />
                         </div>
                     </form>
+                    <div className="text-red-600 text-center">
+                        {error}
+                    </div>
                     <p className="text-center">
                         New to this website? Please
                         <Link

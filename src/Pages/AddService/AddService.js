@@ -60,8 +60,8 @@ const AddService = () => {
 
     return (
         <div>
-            <h2 className="text-center text-3xl text-orange-600 font-bold">
-                Add a New Subject Here!
+            <h2 className="text-center text-3xl font-semibold">
+                Add a New Service Here!
             </h2>
             <div>
                 <form onSubmit={handleService} className="m-10">
@@ -112,10 +112,10 @@ const AddService = () => {
                     <textarea
                         name="description"
                         className="textarea textarea-bordered mt-5 h-24 w-full"
-                        placeholder="feedback"
+                        placeholder="Description"
                         required
                     ></textarea>
-                
+
                     <div className="text-center">
                         <input
                             className="btn btn-primary mt-5"

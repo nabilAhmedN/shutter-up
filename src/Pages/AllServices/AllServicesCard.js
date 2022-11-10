@@ -7,7 +7,7 @@ const AllServicesCard = ({ service }) => {
     const { _id, img, title, price, description, rating } = service;
     
     return (
-        <div className="card w-96 bg-base-100 shadow-xl ml-3">
+        <div className="card w-96 bg-base-100 shadow-xl ml-3 ">
             <figure className="px-10 pt-10">
                 <ImageViewer>
                     <img src={img} alt="" className="rounded-xl" />
