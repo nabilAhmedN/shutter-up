@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Signimg from "../../assets/images/signupImage.jpg";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import useTitle from "../hooks/useTitle";
+import load from '../../assets/images/loading.gif'
 
 const SignUp = () => {
 
@@ -10,7 +11,7 @@ const SignUp = () => {
 
     const [error, setError] = useState("");
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, loading } = useContext(AuthContext);
     const handleSignUp = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -40,6 +41,9 @@ const SignUp = () => {
             .then(() => {})
             .catch((error) => console.error(error));
     };
+     if (loading) {
+         return <img className="mx-auto d-block" src={load} alt="" />;
+     }
     return (
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">

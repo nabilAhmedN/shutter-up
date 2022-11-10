@@ -4,38 +4,41 @@ import MyReviewTab from "../MyReviewTab/MyReviewTab";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useTitle from "../hooks/useTitle";
+import load from '../../assets/images/loading.gif'
 
 const MyReviews = () => {
 
     useTitle("My Reviews");
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem(
-                    "shutterUp-token"
-                )}`,
-            },
-        })
+        fetch(`https://shutter-up-server-gamma.vercel.app/reviews?email=${user?.email}`,
+            {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem(
+                        "shutterUp-token"
+                    )}`,
+                },
+            }
+        )
             .then((res) => res.json())
             .then((data) => setReviews(data));
-            // .then((res) => {
-            //     if (res.status === 401 || res.status === 403) {
-            //         return logOut();
-            //     }
-            //     return res.json();
-            // })
-            // .then((data) => {
-            //     setReviews(data);
-            // });
+        // .then((res) => {
+        //     if (res.status === 401 || res.status === 403) {
+        //         return logOut();
+        //     }
+        //     return res.json();
+        // })
+        // .then((data) => {
+        //     setReviews(data);
+        // });
     }, [user?.email]);
 
     const handleDelete = (id) => {
         const proceed = window.confirm("are you sure to delete");
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://shutter-up-server-gamma.vercel.app/reviews/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())
@@ -60,6 +63,11 @@ const MyReviews = () => {
                 });
         }
     };
+
+    if (loading) {
+        return <img className="mx-auto d-block" src={load} alt="" />;
+        
+    }
 
     return (
         <div>

@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import useTitle from '../hooks/useTitle';
-import AllServicesCard from './AllServicesCard';
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../hooks/useTitle";
+import AllServicesCard from "./AllServicesCard";
+import load from "../../assets/images/loading.gif"
 
 const AllServices = () => {
-
     useTitle("My Services");
 
-    const [services, setServices] = useState([])
-    useEffect(()=>{
-        fetch("http://localhost:5000/allservices")
+    const { loading } = useContext(AuthContext)
+
+    const [services, setServices] = useState([]);
+    useEffect(() => {
+        fetch("https://shutter-up-server-gamma.vercel.app/allservices")
             .then((res) => res.json())
             .then((data) => setServices(data));
-    },[])
+    }, []);
+
+     if (loading) {
+         return <img className="mx-auto d-block" src={load} alt="" />;
+     }
+
     return (
         <div>
             <h2 className="text-center text-xl font-bold mt-3">My Services</h2>

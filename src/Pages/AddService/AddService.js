@@ -1,10 +1,9 @@
-import React from 'react';
-import useTitle from '../hooks/useTitle';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import useTitle from "../hooks/useTitle";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddService = () => {
-
     useTitle("Add service");
 
     const dateobj = new Date();
@@ -31,7 +30,7 @@ const AddService = () => {
             date,
         };
 
-        fetch("http://localhost:5000/services", {
+        fetch("https://shutter-up-server-gamma.vercel.app/services", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -42,7 +41,7 @@ const AddService = () => {
             .then((data) => {
                 console.log(data);
                 if (data.acknowledged) {
-                    toast.success("Service Post on Database successfully", {
+                    toast.success("Service Post successfully", {
                         position: "top-right",
                         autoClose: 1000,
                         hideProgressBar: false,

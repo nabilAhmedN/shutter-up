@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import useTitle from "../hooks/useTitle";
 
 const ReviewForm = () => {
-
     useTitle("Review Form");
 
     let dateObj = new Date();
@@ -37,7 +36,7 @@ const ReviewForm = () => {
             date,
             message,
         };
-        fetch("http://localhost:5000/reviews", {
+        fetch("https://shutter-up-server-gamma.vercel.app/reviews", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -71,7 +70,7 @@ const ReviewForm = () => {
                     Reveiw on: {title}
                 </h2>
                 <p className="text-xl text-center font-medium">{price}</p>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                     <input
                         name="firstName"
                         type="text"

@@ -5,18 +5,23 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import useTitle from "../hooks/useTitle";
+import load from '../../assets/images/loading.gif'
 
 const Login = () => {
-
-    useTitle('Login')
+    useTitle("Login");
 
     const [error, setError] = useState("");
 
-    const { login, googleProviderLogin } = useContext(AuthContext);
+    const { login, googleProviderLogin, loading } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+
+    if (loading) {
+        return <img className="mx-auto d-block" src={load} alt="" />;
+        
+    }
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -48,42 +53,40 @@ const Login = () => {
                 console.error(error);
                 setError(error.message);
             });
-            // .then((result) => {
-            //     const user = result.user;
-            //     // console.log(user);
-            //     form.reset();
+        // .then((result) => {
+        //     const user = result.user;
+        //     // console.log(user);
+        //     form.reset();
 
-            //     const currentUser = {
-            //         email: user.email,
-            //     };
+        //     const currentUser = {
+        //         email: user.email,
+        //     };
 
-            //     console.log(currentUser);
+        //     console.log(currentUser);
 
-            //     // get jwt token
-            //     fetch("http://localhost:5000/jwt", {
-            //         method: "POST",
-            //         headers: {
-            //             "content-type": "application/json",
-            //         },
-            //         body: JSON.stringify(currentUser),
-            //     })
-            //         .then((res) => res.json())
-            //         .then((data) => {
-            //             console.log(data);
-            //             // local storage is the easiest but not the best place to store jwt token
-            //             localStorage.setItem("shutterUp-token", data.token);
-            //             setError("");
-            //             navigate(from, { replace: true });
-            //         });
+        //     // get jwt token
+        //     fetch("https://shutter-up-server-gamma.vercel.app/jwt", {
+        //         method: "POST",
+        //         headers: {
+        //             "content-type": "application/json",
+        //         },
+        //         body: JSON.stringify(currentUser),
+        //     })
+        //         .then((res) => res.json())
+        //         .then((data) => {
+        //             console.log(data);
+        //             // local storage is the easiest but not the best place to store jwt token
+        //             localStorage.setItem("shutterUp-token", data.token);
+        //             setError("");
+        //             navigate(from, { replace: true });
+        //         });
 
-
-            //     // navigate(from, { replace: true });
-            // })
-            // .catch((error) => {
-            //     console.error(error);
-            //     setError(error.message)
-            // });
-            
+        //     // navigate(from, { replace: true });
+        // })
+        // .catch((error) => {
+        //     console.error(error);
+        //     setError(error.message)
+        // });
     };
     return (
         <div className="hero w-full my-20">
@@ -128,9 +131,7 @@ const Login = () => {
                             />
                         </div>
                     </form>
-                    <div className="text-red-600 text-center">
-                        {error}
-                    </div>
+                    <div className="text-red-600 text-center">{error}</div>
                     <p className="text-center">
                         New to this website? Please
                         <Link

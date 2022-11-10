@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ShortServicesCard from './ShortServicesCard'
+import ShortServicesCard from "./ShortServicesCard";
 
 const ShortServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/services")
+        fetch("https://shutter-up-server-gamma.vercel.app/services")
             .then((res) => res.json())
             .then((data) => setServices(data));
     }, []);
@@ -18,7 +18,7 @@ const ShortServices = () => {
                 I provide this type of Services
             </p>
             <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {services.slice(0,3).map((service) => (
+                {services.slice(0, 3).map((service) => (
                     <ShortServicesCard key={service._id} service={service} />
                 ))}
             </div>

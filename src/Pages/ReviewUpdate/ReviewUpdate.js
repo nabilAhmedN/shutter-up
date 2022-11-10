@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useTitle from '../hooks/useTitle';
+import useTitle from "../hooks/useTitle";
 
 const ReviewUpdate = () => {
-
     useTitle("Review Update");
 
-    const data = useLoaderData()
+    const data = useLoaderData();
     const { _id, message, serviceName, rating, price } = data;
 
-    const [user, setUser] = useState(data)
+    const [user, setUser] = useState(data);
 
     const handleUpdateUser = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         console.log(user);
 
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://shutter-up-server-gamma.vercel.app/reviews/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -44,10 +43,10 @@ const ReviewUpdate = () => {
     const handleInputChange = (event) => {
         const value = event.target.value;
         const field = event.target.name;
-        const newUser = {...user}
+        const newUser = { ...user };
         newUser[field] = value;
-        setUser(newUser)
-    }
+        setUser(newUser);
+    };
 
     return (
         <div>
@@ -96,6 +95,7 @@ const ReviewUpdate = () => {
                     type="text"
                     placeholder="Price"
                     defaultValue={price}
+                    readOnly
                     className="input input-ghost w-full my-2 input-bordered"
                 />
 
