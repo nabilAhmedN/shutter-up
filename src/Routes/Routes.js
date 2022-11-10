@@ -25,11 +25,19 @@ export const routes = createBrowserRouter([
             },
             {
                 path: "/myreviews",
-                element: <MyReviews />,
+                element: (
+                    <PrivateRoute>
+                        <MyReviews />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/addservice",
-                element: <AddService />,
+                element: (
+                    <PrivateRoute>
+                        <AddService />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/allservices",
@@ -57,7 +65,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path: "/update/:id",
-                element: <ReviewUpdate />,
+                element: (
+                    <PrivateRoute>
+                        <ReviewUpdate />
+                    </PrivateRoute>
+                ),
                 loader: ({ params }) =>
                     fetch(
                         `https://shutter-up-server-gamma.vercel.app/reviews/${params.id}`
