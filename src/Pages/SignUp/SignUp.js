@@ -48,7 +48,11 @@ const SignUp = () => {
         <div className="hero w-full my-20">
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
-                    <img className="w-3/4" src={Signimg} alt="" />
+                    <img className="
+                    mx-auto
+                    w-3/4
+                    "
+                    src={Signimg} alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
                     <h1 className="text-5xl text-center font-bold">Sign Up</h1>

@@ -93,7 +93,7 @@ const Login = () => {
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img
-                        className="ml-20 w-3/4 rounded-lg"
+                        className="mx-auto w-3/4 rounded-lg"
                         src={Logimg}
                         alt=""
                     />
